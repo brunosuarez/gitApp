@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FeedComponent } from './components/feed/feed.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cadDev';
+  @ViewChild(FeedComponent) feedComponent!: FeedComponent;
+
+  onSearch(query: any): void {
+    if (this.feedComponent) {
+      this.feedComponent.search(query);
+    }
+  }
 }
+
+
+
+
